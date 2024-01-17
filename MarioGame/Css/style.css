@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gameBoard {
+    width: 90%;
+    height: 550px;
+    border-bottom: 15px solid #118d1c;
+    background :linear-gradient(#1ea8df, #ace1f7);
+    margin: 0 auto;
+    position: relative; /* Para que os itens respeitem a delimitação do quadro */
+    overflow: hidden; /* Tudo que sair da tela fica escondido */
+}
+
+
+.pipe {
+    position: absolute; /* para que nenhum item interfira no comportamento do outro */
+    bottom: 0;
+    width: 80px;
+    /*right: 0; Vamos começar a animação com right 0 e ir aumentando, esta é a lógica*/
+    animation: pipe-animation 1.4s infinite linear;
+    /* Infinite para não parar e linear para não acelerar */
+    /* Definir a distancia que o pipe tem que percorrer até chegar ao mario para bater */
+    /* Quando o deslocamento left for 120 pixels ele bate e o mario tem que parar e mudar de foto */
+
+}
+
+.mario {
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+ /* Da mesma forma que animamos a propriedade right, vamos animar a propriedade bottom do mario, pra ele pular. */
+    
+}
+
+.jump {
+    animation: jump 500ms ease-out;
+    /* ease-out para ele cair mais suave */
+
+}
+
+
+.clouds {
+
+    width: 550px;
+    position: absolute;
+    animation: clouds-animation 20s infinite linear;
+}
+
+/* Eles permitem que você defina estados específicos em uma animação e especifique como um elemento HTML deve ser estilizado em cada ponto-chave dessa animação */
+
+@keyframes pipe-animation {
+    from {
+        right: -80px; /* Mesma largura do Pipe */
+    }
+
+    to {
+        right: 100%;
+    }
+    
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0;
+    }
+
+    40% {
+        bottom: 180px;
+    }
+
+    50% {
+        bottom: 180px;
+    }
+
+    60% {
+        bottom: 180px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+@keyframes clouds-animation {
+
+    from {
+        right: -550px;
+    }
+
+    to {
+        right: 150%;
+    }
+    
+}
+
